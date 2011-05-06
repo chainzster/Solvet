@@ -31,7 +31,7 @@ namespace Solvet
             doCalc();
         }
 
-        private void writeLineTextBox1(string input, Color colour)
+        private void writeLineTextBox1(string input, Color colour, FontStyle style)
         {
             string line = input;
             
@@ -44,7 +44,7 @@ namespace Solvet
             richTextBox1.SelectionLength = line.Length;
 
             richTextBox1.SelectionColor = colour;
-
+            richTextBox1.SelectionFont = new System.Drawing.Font(richTextBox1.SelectionFont, style);
             richTextBox1.SelectionLength = 0;
 
         }
@@ -102,16 +102,16 @@ namespace Solvet
 
             if (!calculation.Error)
             {
-                writeLineTextBox1(calculation.Query + "\n", Color.Black);
-                writeLineTextBox1(calculation.Input + " =" + "\n", Color.DarkBlue);
-                writeLineTextBox1(calculation.Output + " ", Color.DarkGreen);
+                writeLineTextBox1(calculation.Query + "\n", Color.Black, FontStyle.Regular);
+                writeLineTextBox1(calculation.Input + " =" + "\n", Color.DarkBlue, FontStyle.Regular);
+                writeLineTextBox1(calculation.Output + " ", Color.DarkGreen, FontStyle.Regular);
                 Clipboard.SetText(calculation.Output);
 
                 this.toolStripStatusLabel1.Text = "";
             }
             else
             {
-                writeLineTextBox1(query, Color.DarkRed);
+                writeLineTextBox1(query, Color.DarkRed, FontStyle.Regular);
 
                 //Don't show error if there is no query
                 if (calculation.Query.Length == 0)
