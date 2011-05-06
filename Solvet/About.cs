@@ -24,5 +24,10 @@ namespace Solvet
 
             label3.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.eclipse.org/legal/epl-v10.html");
+        }
     }
 }
