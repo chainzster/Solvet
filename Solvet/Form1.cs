@@ -24,6 +24,7 @@ namespace Solvet
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -105,13 +106,17 @@ namespace Solvet
                 writeLineTextBox1(calculation.Query + "\n", Color.Black, FontStyle.Regular);
                 writeLineTextBox1(calculation.Input + " =" + "\n", Color.DarkBlue, FontStyle.Regular);
                 writeLineTextBox1(calculation.Output + " ", Color.DarkGreen, FontStyle.Regular);
+
+                this.textBox1.Text = calculation.Output;
+
                 Clipboard.SetText(calculation.Output);
 
-                this.toolStripStatusLabel1.Text = "";
+                this.toolStripStatusLabel1.Text = "Answer copied to clipboard.";
             }
             else
             {
                 writeLineTextBox1(query, Color.DarkRed, FontStyle.Regular);
+                this.textBox1.Text = "";
 
                 //Don't show error if there is no query
                 if (calculation.Query.Length == 0)
